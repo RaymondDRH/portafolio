@@ -53,7 +53,7 @@ const SUGGESTIONS = [
 export default function VSCodeShell() {
   const [active, setActive]       = useState<FileId>('home')
   const [open, setOpen]           = useState<FileId[]>(['home'])
-  const [sidebarOpen, setSidebar] = useState(true)
+  const [sidebarOpen, setSidebar] = useState(false)
   const [panelOpen, setPanel]     = useState(false)
   const [paletteOpen, setPalette] = useState(false)
   const [theme, setTheme]         = useState<'dark' | 'light'>('dark')
