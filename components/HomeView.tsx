@@ -13,7 +13,7 @@ export default function HomeView() {
   return (
     <div className="code-file">
       <L n={1}><span className="cm">// home.tsx — raymond_reyes.dev</span></L>
-      <L n={2}><span className="cm">// AI-First Full-Stack Developer · AICrafterLab LLC</span></L>
+      <L n={2}><span className="cm">// AI-First Full-Stack Developer · raymondreyes.dev</span></L>
       <L n={3} />
       <L n={4}>
         <span className="kw">import </span>
@@ -56,9 +56,9 @@ export default function HomeView() {
       </L>
       <L n={14}>
         <span style={{ paddingLeft: 24 }}>
-          <span className="pr">company</span>
-          <span className="pu">:&nbsp;&nbsp; </span>
-          <span className="str">"AICrafterLab LLC — Founder"</span>
+          <span className="pr">focus</span>
+          <span className="pu">:&nbsp;&nbsp;&nbsp;&nbsp; </span>
+          <span className="str">"AI-native products · automation · SaaS"</span>
           <span className="pu">,</span>
         </span>
       </L>

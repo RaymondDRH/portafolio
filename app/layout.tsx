@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Raymond Reyes — AI-First Full-Stack Developer',
   description:
-    'AI-first full-stack developer and founder of AICrafterLab. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
+    'AI-first full-stack developer and founder of raymondreyes.dev. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
   keywords: [
     'AI developer',
     'full-stack developer',
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     'Claude API',
     'automation',
     'n8n',
-    'AICrafterLab',
+    'raymondreyes.dev',
   ],
   authors: [{ name: 'Raymond Reyes' }],
   openGraph: {
     title: 'Raymond Reyes — AI-First Full-Stack Developer',
     description:
-      'AI-first full-stack developer and founder of AICrafterLab. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
+      'AI-first full-stack developer and founder of raymondreyes.dev. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
     url: 'https://raymondreyes.dev',
     siteName: 'Raymond Reyes',
     type: 'website',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Raymond Reyes — AI-First Full-Stack Developer',
     description:
-      'AI-first full-stack developer and founder of AICrafterLab. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
+      'AI-first full-stack developer and founder of raymondreyes.dev. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
   },
 }
 

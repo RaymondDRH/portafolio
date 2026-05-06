@@ -13,8 +13,7 @@ export default function AboutView() {
       <h2 className="md-h2">Background</h2>
       <p className="md-p">
         Started from zero — no CS degree, no bootcamp. Just curiosity, consistency, and a lot of building.
-        I founded <span className="md-strong">AICrafterLab LLC</span> to help businesses leverage AI and automation
-        to grow. But I don&apos;t just sell services — I build actual products.
+        I help businesses leverage AI and automation to grow — but I don&apos;t just sell services, I build actual products.
       </p>
       <p className="md-p">
         Mid-level developer with <span className="md-em">senior-level AI integration skills</span>.
