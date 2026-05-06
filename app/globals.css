@@ -38,6 +38,30 @@ html, body { height: 100%; overflow: hidden; }
   --font-display: var(--sg, 'Space Grotesk'), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* ── Light Theme ── */
+[data-theme="light"] {
+  --editor-bg:    #ffffff;
+  --sidebar-bg:   #f3f3f3;
+  --actbar-bg:    #2c2c2c;
+  --titlebar-bg:  #dddddd;
+  --tab-bg:       #ececec;
+  --panel-bg:     #f3f3f3;
+  --border:       #d4d4d4;
+  --border-light: #cccccc;
+  --text:         #333333;
+  --text-dim:     #6e6e6e;
+  --text-bright:  #1e1e1e;
+  --text-faint:   #a0a0a0;
+  --syn-keyword:  #0000ff;
+  --syn-type:     #267f99;
+  --syn-string:   #a31515;
+  --syn-number:   #098658;
+  --syn-comment:  #008000;
+  --syn-fn:       #795e26;
+  --syn-var:      #001080;
+  --syn-prop:     #001080;
+}
+
 body {
   background: var(--editor-bg);
   color: var(--text);
@@ -460,6 +484,52 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .contact-channel-info { display: flex; flex-direction: column; gap: 2px; }
 .contact-channel-label { font-size: 10.5px; font-family: var(--font-mono); color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
 .contact-channel-value { font-size: 13.5px; color: var(--text-bright); font-family: var(--font-mono); }
+
+/* ── Command Palette ── */
+.cp-backdrop {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.5);
+  display: flex; justify-content: center; align-items: flex-start;
+  padding-top: 80px;
+}
+.cp-modal {
+  width: 100%; max-width: 560px;
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  margin: 0 16px;
+}
+.cp-input-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.cp-input {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text-bright); font-size: 14px;
+  font-family: var(--font-ui);
+  caret-color: var(--accent);
+}
+.cp-input::placeholder { color: var(--text-faint); }
+.cp-esc {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--text-faint); background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border); border-radius: 3px;
+  padding: 1px 5px; cursor: pointer;
+}
+.cp-results { max-height: 280px; overflow-y: auto; }
+.cp-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 14px; cursor: pointer;
+  transition: background 0.1s;
+}
+.cp-item:hover, .cp-item.active { background: rgba(255,255,255,0.07); }
+[data-theme="light"] .cp-item:hover,
+[data-theme="light"] .cp-item.active { background: rgba(0,0,0,0.06); }
+.cp-item-name { font-size: 13px; color: var(--text-bright); flex: 1; }
+.cp-item-lang { font-size: 11px; font-family: var(--font-mono); color: var(--text-faint); }
 
 /* ── Panel Hint Bar ── */
 .vsc-panel-hint {

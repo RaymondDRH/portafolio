@@ -1,14 +1,24 @@
 export default function ActivityBar({
   sidebarOpen,
   onToggle,
+  onSearch,
+  onSkills,
+  onContact,
+  onTheme,
+  theme,
 }: {
   sidebarOpen: boolean
   onToggle: () => void
+  onSearch: () => void
+  onSkills: () => void
+  onContact: () => void
+  onTheme: () => void
+  theme: 'dark' | 'light'
 }) {
   return (
     <div className="vsc-activitybar">
       <div className="vsc-actbar-top">
-        {/* Explorer toggle */}
+        {/* Explorer */}
         <button
           className={`vsc-actbar-btn${sidebarOpen ? ' active' : ''}`}
           onClick={onToggle}
@@ -19,8 +29,8 @@ export default function ActivityBar({
           </svg>
         </button>
 
-        {/* Search (decorative) */}
-        <button className="vsc-actbar-btn" title="Search" style={{ opacity: 0.35, cursor: 'default' }}>
+        {/* Search → Command Palette */}
+        <button className="vsc-actbar-btn" onClick={onSearch} title="Go to file (Ctrl+P)">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" />
             <path d="M21 21l-4.35-4.35" />
@@ -40,8 +50,8 @@ export default function ActivityBar({
           </svg>
         </a>
 
-        {/* Extensions (decorative) */}
-        <button className="vsc-actbar-btn" title="Extensions" style={{ opacity: 0.35, cursor: 'default' }}>
+        {/* Extensions → Skills */}
+        <button className="vsc-actbar-btn" onClick={onSkills} title="Skills">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="2" width="9" height="9" rx="2" />
             <rect x="13" y="2" width="9" height="9" rx="2" />
@@ -50,20 +60,26 @@ export default function ActivityBar({
           </svg>
         </button>
 
-        {/* Account */}
-        <button className="vsc-actbar-btn" title="Raymond Reyes" style={{ opacity: 0.5, cursor: 'default' }}>
+        {/* Account → Contact */}
+        <button className="vsc-actbar-btn" onClick={onContact} title="Contact">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="8" r="4" />
             <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
           </svg>
         </button>
 
-        {/* Settings */}
-        <button className="vsc-actbar-btn" title="Settings" style={{ opacity: 0.5, cursor: 'default' }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
-          </svg>
+        {/* Theme toggle */}
+        <button className="vsc-actbar-btn" onClick={onTheme} title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}>
+          {theme === 'dark' ? (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          )}
         </button>
       </div>
 

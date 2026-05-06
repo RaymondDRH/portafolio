@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import ActivityBar from './ActivityBar'
+import CommandPalette from './CommandPalette'
 import FileExplorer from './FileExplorer'
 import TabBar from './TabBar'
 import StatusBar from './StatusBar'
@@ -54,12 +55,18 @@ export default function VSCodeShell() {
   const [open, setOpen]           = useState<FileId[]>(['home'])
   const [sidebarOpen, setSidebar] = useState(true)
   const [panelOpen, setPanel]     = useState(false)
+  const [paletteOpen, setPalette] = useState(false)
+  const [theme, setTheme]         = useState<'dark' | 'light'>('dark')
   const [msgs, setMsgs]           = useState<Msg[]>([INIT_MSG])
   const [input, setInput]         = useState('')
   const [busy, setBusy]           = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
 
   useEffect(() => {
     if (panelRef.current) panelRef.current.scrollTop = panelRef.current.scrollHeight
@@ -92,6 +99,7 @@ export default function VSCodeShell() {
     const handler = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === 'b') { e.preventDefault(); setSidebar(o => !o) }
       if (e.ctrlKey && e.key === '`') { e.preventDefault(); setPanel(o => !o) }
+      if (e.ctrlKey && e.key === 'p') { e.preventDefault(); setPalette(o => !o) }
       if (e.ctrlKey && e.key >= '1' && e.key <= '5') {
         e.preventDefault()
         const file = FILES[parseInt(e.key) - 1]
@@ -132,6 +140,10 @@ export default function VSCodeShell() {
 
   return (
     <div className="vsc-shell">
+      {paletteOpen && (
+        <CommandPalette onOpen={openFile} onClose={() => setPalette(false)} />
+      )}
+
       {/* ── Titlebar ── */}
       <div className="vsc-titlebar">
         <div className="vsc-titlebar-dots">
@@ -145,7 +157,15 @@ export default function VSCodeShell() {
 
       {/* ── Body ── */}
       <div className="vsc-body">
-        <ActivityBar sidebarOpen={sidebarOpen} onToggle={() => setSidebar(o => !o)} />
+        <ActivityBar
+          sidebarOpen={sidebarOpen}
+          onToggle={() => setSidebar(o => !o)}
+          onSearch={() => setPalette(true)}
+          onSkills={() => openFile('skills')}
+          onContact={() => openFile('contact')}
+          onTheme={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
+          theme={theme}
+        />
 
         {sidebarOpen && (
           <div className="vsc-sidebar-backdrop" onClick={() => setSidebar(false)} />
