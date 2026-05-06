@@ -12,8 +12,9 @@ export default function AboutView() {
 
       <h2 className="md-h2">Background</h2>
       <p className="md-p">
-        Started from zero — no CS degree, no bootcamp. Just curiosity, consistency, and a lot of building.
-        I help businesses leverage AI and automation to grow — but I don&apos;t just sell services, I build actual products.
+        B.S. in Information Sciences, CCNA certified, and 7+ years building for real clients
+        before AI became mainstream. Started with WordPress and client work, evolved into
+        full-stack development, and since 2025 I&apos;ve been building exclusively with AI-native stacks.
       </p>
       <p className="md-p">
         Mid-level developer with <span className="md-em">senior-level AI integration skills</span>.
@@ -21,12 +22,19 @@ export default function AboutView() {
         I know how to design a product <em>around</em> AI from day one.
       </p>
 
+      <h2 className="md-h2">Career path</h2>
+      <ul className="md-ul">
+        <li><span className="md-strong">2018–2021 · Bump Media</span> — Web developer. WordPress, WooCommerce, client sites end-to-end.</li>
+        <li><span className="md-strong">2021–2024 · Digital Crafter Lab</span> — Lead web developer. 10+ client projects, e-commerce, performance tuning.</li>
+        <li><span className="md-strong">2025–Present · Independent</span> — AI-First Full-Stack Developer. 7 production products built with Next.js, Supabase, Claude API, Stripe.</li>
+      </ul>
+
       <h2 className="md-h2">What makes me different</h2>
       <ul className="md-ul">
         <li><span className="md-strong">7 live products</span> — not side projects, real users and real auth</li>
         <li>End-to-end builder: architecture → UI → billing → deployment</li>
         <li>AI-first stack: <code className="md-code">Claude API</code> + production-tested patterns</li>
-        <li>Self-taught — which means I learn whatever I need, when I need it</li>
+        <li>Client background — I understand what businesses actually need, not just what looks good technically</li>
       </ul>
 
       <h2 className="md-h2">Stack in production</h2>
@@ -41,17 +49,15 @@ export default function AboutView() {
         <span className="md-badge">Cloudflare</span>
         <span className="md-badge">Vercel</span>
         <span className="md-badge">WebAuthn</span>
+        <span className="md-badge">WordPress</span>
+        <span className="md-badge">WooCommerce</span>
       </p>
 
-      <h2 className="md-h2">Philosophy</h2>
-      <div className="md-blockquote">
-        Concepts over shortcuts. AI is a tool — you need to know what to ask, and why what it
-        tells you might be wrong.
-      </div>
-      <p className="md-p">
-        I push back when someone wants to copy-paste code without understanding it.
-        I care about developers growing, not just shipping.
-      </p>
+      <h2 className="md-h2">Education</h2>
+      <ul className="md-ul">
+        <li><span className="md-strong">B.S. Information Sciences</span> — Univ. Politécnica Territorial Andrés Eloy Blanco (2006–2011)</li>
+        <li><span className="md-strong">CCNA Routing &amp; Switching</span> — Cisco Networking Academy (2016)</li>
+      </ul>
 
       <h2 className="md-h2">Availability</h2>
       <ul className="md-ul">
