@@ -27,46 +27,48 @@ export default function RobotFAB({ onClick }: { onClick: () => void }) {
   return (
     <button className="robot-fab" onClick={onClick} aria-label="Ask RAY — AI Assistant">
       <svg
-        width="56" height="56"
-        viewBox="0 0 56 56"
+        width="54" height="64"
+        viewBox="0 0 54 64"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="robot-svg"
       >
-        {/* ── Glow ── */}
-        <circle cx="28" cy="28" r="27" fill="#0f1117" stroke="#1D9B8C" strokeWidth="1.5" />
-
         {/* ── Antenna ── */}
-        <line x1="28" y1="10" x2="28" y2="17" stroke="#1D9B8C" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="28" cy="9" r="2.5" fill="#2BD4BD" className="robot-antenna-dot" />
+        <line x1="27" y1="2" x2="27" y2="10" stroke="#1D9B8C" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="27" cy="2" r="3" fill="#2BD4BD" className="robot-antenna-dot" />
 
         {/* ── Head ── */}
-        <rect x="16" y="17" width="24" height="20" rx="4" fill="#1D9B8C" opacity="0.15" stroke="#1D9B8C" strokeWidth="1.2" />
+        <rect x="8" y="10" width="38" height="28" rx="7" fill="#1D9B8C" opacity="0.18" stroke="#1D9B8C" strokeWidth="1.8" />
 
         {/* ── Eyes ── */}
         <rect
           ref={eye1Ref}
-          x="19.5" y="23" width="6" height="6" rx="1.5"
+          x="13" y="19" width="10" height="10" rx="2.5"
           fill="#2BD4BD"
-          style={{ transformOrigin: '22.5px 26px' }}
+          style={{ transformOrigin: '18px 24px' }}
         />
         <rect
           ref={eye2Ref}
-          x="30.5" y="23" width="6" height="6" rx="1.5"
+          x="31" y="19" width="10" height="10" rx="2.5"
           fill="#2BD4BD"
-          style={{ transformOrigin: '33.5px 26px' }}
+          style={{ transformOrigin: '36px 24px' }}
         />
 
         {/* ── Mouth ── */}
-        <path d="M22 33.5 Q28 36 34 33.5" stroke="#1D9B8C" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+        <path d="M18 34 Q27 38.5 36 34" stroke="#1D9B8C" strokeWidth="1.6" strokeLinecap="round" fill="none" />
+
+        {/* ── Neck ── */}
+        <rect x="22" y="38" width="10" height="5" rx="2" fill="#1D9B8C" opacity="0.4" />
 
         {/* ── Body ── */}
-        <rect x="19" y="39" width="18" height="10" rx="3" fill="#1D9B8C" opacity="0.12" stroke="#1D9B8C" strokeWidth="1" />
-        <line x1="28" y1="39" x2="28" y2="49" stroke="#1D9B8C" strokeWidth="0.8" opacity="0.5" />
+        <rect x="10" y="43" width="34" height="18" rx="6" fill="#1D9B8C" opacity="0.14" stroke="#1D9B8C" strokeWidth="1.6" />
 
-        {/* ── Side bolts ── */}
-        <circle cx="16" cy="43" r="1.5" fill="#1D9B8C" opacity="0.5" />
-        <circle cx="40" cy="43" r="1.5" fill="#1D9B8C" opacity="0.5" />
+        {/* ── Chest light ── */}
+        <circle cx="27" cy="52" r="3.5" fill="#2BD4BD" opacity="0.6" />
+
+        {/* ── Side arms ── */}
+        <rect x="2" y="45" width="7" height="12" rx="3.5" fill="#1D9B8C" opacity="0.35" stroke="#1D9B8C" strokeWidth="1.2" />
+        <rect x="45" y="45" width="7" height="12" rx="3.5" fill="#1D9B8C" opacity="0.35" stroke="#1D9B8C" strokeWidth="1.2" />
       </svg>
     </button>
   )
