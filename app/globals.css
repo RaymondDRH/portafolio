@@ -458,27 +458,34 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .contact-channel-label { font-size: 10.5px; font-family: var(--font-mono); color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
 .contact-channel-value { font-size: 13.5px; color: var(--text-bright); font-family: var(--font-mono); }
 
-/* ── NOVA Status Button ── */
+/* ── Ask RAY Button ── */
 .vsc-nova-btn {
-  background: rgba(29,155,140,0.25) !important;
+  background: #1D9B8C !important;
   color: #fff !important;
-  font-weight: 600;
-  gap: 7px;
-  letter-spacing: 0.03em;
-  border-left: 1px solid rgba(29,155,140,0.3);
-  border-right: 1px solid rgba(29,155,140,0.3);
+  font-weight: 700;
+  font-size: 12px;
+  gap: 6px;
+  letter-spacing: 0.02em;
+  padding: 0 14px !important;
   transition: background 0.15s;
 }
-.vsc-nova-btn:hover { background: rgba(29,155,140,0.45) !important; }
-.vsc-nova-btn.closed { background: rgba(29,155,140,0.15) !important; }
+.vsc-nova-btn:hover { background: #17857a !important; }
+.vsc-nova-btn.closed {
+  background: #155f58 !important;
+  animation: ray-attention 3s ease-in-out infinite;
+}
 .nova-dot {
   display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-  background: #2BD4BD; flex-shrink: 0;
+  background: #fff; flex-shrink: 0; opacity: 0.9;
 }
 .nova-dot.pulse { animation: nova-pulse 2s ease-in-out infinite; }
 @keyframes nova-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.6); }
+}
+@keyframes ray-attention {
+  0%, 80%, 100% { background: #155f58 !important; }
+  90% { background: #1D9B8C !important; }
 }
 
 /* ── Responsive ── */

@@ -23,10 +23,10 @@ export default function StatusBar({
         <div
           className={`vsc-status-item vsc-nova-btn${panelOpen ? '' : ' closed'}`}
           onClick={onTerminal}
-          title="Toggle NOVA terminal (Ctrl+`)"
+          title="Chat with Raymond's AI Assistant (Ctrl+`)"
         >
           <span className={`nova-dot${panelOpen ? '' : ' pulse'}`} />
-          NOVA {panelOpen ? '▼' : '▲'}
+          ✦ Ask RAY {panelOpen ? '▼' : '▲'}
         </div>
         <div className="vsc-status-item">{lang}</div>
         <div className="vsc-status-item">UTF-8</div>
