@@ -11,8 +11,10 @@ import ProjectsView from './ProjectsView'
 import SkillsView from './SkillsView'
 import AboutView from './AboutView'
 import ContactView from './ContactView'
+import PackageView from './PackageView'
+import EnvView from './EnvView'
 
-export type FileId = 'home' | 'projects' | 'skills' | 'about' | 'contact'
+export type FileId = 'home' | 'projects' | 'skills' | 'about' | 'contact' | 'package' | 'env'
 
 export type FileMeta = {
   id: FileId
@@ -22,11 +24,13 @@ export type FileMeta = {
 }
 
 export const FILES: FileMeta[] = [
-  { id: 'home',     name: 'home.tsx',    ext: 'tsx', language: 'TypeScript JSX' },
-  { id: 'projects', name: 'projects.js', ext: 'js',  language: 'JavaScript'     },
-  { id: 'skills',   name: 'skills.ts',   ext: 'ts',  language: 'TypeScript'     },
-  { id: 'about',    name: 'about.md',    ext: 'md',  language: 'Markdown'       },
-  { id: 'contact',  name: 'contact.tsx', ext: 'tsx', language: 'TypeScript JSX' },
+  { id: 'home',     name: 'home.tsx',       ext: 'tsx',  language: 'TypeScript JSX' },
+  { id: 'projects', name: 'projects.js',    ext: 'js',   language: 'JavaScript'     },
+  { id: 'skills',   name: 'skills.ts',      ext: 'ts',   language: 'TypeScript'     },
+  { id: 'about',    name: 'about.md',       ext: 'md',   language: 'Markdown'       },
+  { id: 'contact',  name: 'contact.tsx',    ext: 'tsx',  language: 'TypeScript JSX' },
+  { id: 'package',  name: 'package.json',   ext: 'json', language: 'JSON'           },
+  { id: 'env',      name: '.env.local',     ext: 'env',  language: 'Properties'     },
 ]
 
 function EditorView({ id }: { id: FileId }) {
@@ -36,6 +40,8 @@ function EditorView({ id }: { id: FileId }) {
     case 'skills':   return <SkillsView />
     case 'about':    return <AboutView />
     case 'contact':  return <ContactView />
+    case 'package':  return <PackageView />
+    case 'env':      return <EnvView />
   }
 }
 

@@ -80,12 +80,18 @@ export default function FileExplorer({
           <span style={{ color: '#f48771' }}>resume.pdf</span>
         </a>
 
-        <div className="vsc-explorer-file" style={{ opacity: 0.4, cursor: 'default' }}>
+        <div
+          className={`vsc-explorer-file${active === 'package' ? ' active' : ''}`}
+          onClick={() => onOpen('package')}
+        >
           <span style={{ fontSize: 13 }}>📦</span>
           <span className="ext-json">package.json</span>
         </div>
 
-        <div className="vsc-explorer-file" style={{ opacity: 0.4, cursor: 'default' }}>
+        <div
+          className={`vsc-explorer-file${active === 'env' ? ' active' : ''}`}
+          onClick={() => onOpen('env')}
+        >
           <span style={{ fontSize: 13 }}>🔒</span>
           <span className="ext-env">.env.local</span>
         </div>
