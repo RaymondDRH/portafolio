@@ -68,6 +68,18 @@ export default function FileExplorer({
           </div>
         ))}
 
+        <a
+          href="/raymond-reyes-resume.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="vsc-explorer-file"
+          style={{ textDecoration: 'none' }}
+          title="Open resume"
+        >
+          <span style={{ fontSize: 13 }}>📋</span>
+          <span style={{ color: '#f48771' }}>resume.pdf</span>
+        </a>
+
         <div className="vsc-explorer-file" style={{ opacity: 0.4, cursor: 'default' }}>
           <span style={{ fontSize: 13 }}>📦</span>
           <span className="ext-json">package.json</span>

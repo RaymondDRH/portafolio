@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raymond Reyes — Resume</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    background: #fff;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 44px 48px;
+  }
+
+  /* ── Header ── */
+  .header { border-bottom: 2px solid #1D9B8C; padding-bottom: 16px; margin-bottom: 20px; }
+  .header-name { font-size: 30px; font-weight: 700; letter-spacing: -0.5px; color: #0f0f0f; }
+  .header-title { font-size: 13.5px; color: #1D9B8C; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin: 3px 0 10px; }
+  .header-contact {
+    display: flex; flex-wrap: wrap; gap: 6px 20px;
+    font-size: 12.5px; color: #444;
+  }
+  .header-contact a { color: #444; text-decoration: none; }
+  .header-contact a:hover { color: #1D9B8C; }
+  .contact-dot { color: #ccc; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 20px; }
+  .section-title {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: #888; margin-bottom: 10px;
+    padding-bottom: 4px; border-bottom: 1px solid #eee;
+  }
+
+  /* ── Summary ── */
+  .summary { font-size: 13.5px; color: #333; line-height: 1.65; }
+
+  /* ── Skills ── */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; }
+  .skill-row { display: flex; gap: 6px; align-items: baseline; }
+  .skill-label { font-size: 11.5px; font-weight: 600; color: #555; min-width: 110px; flex-shrink: 0; }
+  .skill-value { font-size: 12px; color: #333; }
+
+  /* ── Experience ── */
+  .job { margin-bottom: 16px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+  .job-title { font-weight: 700; font-size: 13.5px; color: #0f0f0f; }
+  .job-date { font-size: 11.5px; color: #888; white-space: nowrap; }
+  .job-company { font-size: 12.5px; color: #1D9B8C; font-weight: 600; margin-bottom: 5px; }
+  .job-desc { font-size: 12.5px; color: #444; margin-bottom: 4px; }
+  .job-bullets { padding-left: 14px; }
+  .job-bullets li {
+    font-size: 12.5px; color: #333; margin-bottom: 3px; list-style: disc;
+  }
+  .job-bullets li::marker { color: #1D9B8C; }
+  .job-stack {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px;
+  }
+  .tag {
+    font-size: 10.5px; font-weight: 600;
+    background: #f0faf9; border: 1px solid #b2e0db;
+    color: #1D9B8C; padding: 1px 7px; border-radius: 3px;
+  }
+
+  /* ── Education ── */
+  .edu-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .edu-degree { font-size: 13px; font-weight: 600; color: #0f0f0f; }
+  .edu-date { font-size: 11.5px; color: #888; }
+  .edu-school { font-size: 12px; color: #555; }
+
+  /* ── Print ── */
+  @media print {
+    body { padding: 32px 40px; font-size: 12.5px; }
+    @page { margin: 0; size: A4; }
+    .header-name { font-size: 26px; }
+    .job-stack .tag { background: #f0faf9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-title { border-bottom-color: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-name">Raymond Reyes</div>
+  <div class="header-title">AI-First Full-Stack Developer</div>
+  <div class="header-contact">
+    <span>raymondreyesh@gmail.com</span>
+    <span class="contact-dot">·</span>
+    <span>USA — Remote</span>
+    <span class="contact-dot">·</span>
+    <a href="https://raymondreyes.dev">raymondreyes.dev</a>
+    <span class="contact-dot">·</span>
+    <a href="https://github.com/RaymondDRH">github.com/RaymondDRH</a>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="section">
+  <div class="section-title">Summary</div>
+  <p class="summary">
+    Mid-level full-stack developer with senior-level AI integration skills. I build AI-native
+    products from scratch — real auth, real billing, real users. 7+ production products shipped
+    independently using Next.js, Supabase, Claude API and Stripe. 3+ years building with large
+    language models in production. Self-taught, fast learner, and available immediately.
+  </p>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skill-row">
+      <span class="skill-label">AI / LLM</span>
+      <span class="skill-value">Claude API · Gemini · Prompt Engineering · RAG · Tool Use · n8n</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-label">Frontend</span>
+      <span class="skill-value">Next.js · React · TypeScript · Tailwind CSS · Server Actions</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-label">Backend / DB</span>
+      <span class="skill-value">Supabase · PostgreSQL · Node.js · Edge Functions · RLS</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-label">Infrastructure</span>
+      <span class="skill-value">Vercel · Cloudflare · Stripe · WebAuthn · DNS/SSL · VPS · cPanel</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-label">CMS / E-commerce</span>
+      <span class="skill-value">WordPress · WooCommerce · Elementor · Plugin Configuration</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-label">Networking</span>
+      <span class="skill-value">CCNA certified — routing, switching, network configuration</span>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+  <div class="section-title">Experience</div>
+
+  <!-- AI-First -->
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">AI-First Full-Stack Developer</span>
+      <span class="job-date">2025 — Present</span>
+    </div>
+    <div class="job-company">Independent / Freelance · USA (Remote)</div>
+    <ul class="job-bullets">
+      <li>Built <strong>Foundry</strong> — AI-powered SaaS that generates complete websites from a single prompt. Full auth, Stripe billing, and Cloudflare hosting wired in.</li>
+      <li>Built <strong>CCEver Hub</strong> — Church management platform with WebAuthn passkey auth and a WhatsApp automation bot (announcements, attendance, reminders).</li>
+      <li>Built 5 additional production tools: AI Invoice Generator, AI Business Name Generator, n8n Automation Showcase, Embeddable AI Chatbot Widget, and Client Portal.</li>
+      <li>Designed AI integration patterns from day one — prompt chains, streaming responses, RAG, tool use — not added-on after the fact.</li>
+    </ul>
+    <div class="job-stack">
+      <span class="tag">Next.js</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">Supabase</span>
+      <span class="tag">Claude API</span>
+      <span class="tag">Stripe</span>
+      <span class="tag">n8n</span>
+      <span class="tag">Cloudflare</span>
+      <span class="tag">Vercel</span>
+      <span class="tag">WebAuthn</span>
+    </div>
+  </div>
+
+  <!-- Digital Crafter Lab -->
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Lead Web Developer</span>
+      <span class="job-date">2021 — 2024</span>
+    </div>
+    <div class="job-company">Digital Crafter Lab</div>
+    <ul class="job-bullets">
+      <li>Led web development for client projects — e-commerce stores, informational sites, and landing pages.</li>
+      <li>Managed end-to-end: architecture, design, development, deployment, and client training.</li>
+      <li>Optimized site performance, plugin integrations, and payment gateways across 10+ active client sites.</li>
+    </ul>
+    <div class="job-stack">
+      <span class="tag">WordPress</span>
+      <span class="tag">WooCommerce</span>
+      <span class="tag">Elementor</span>
+      <span class="tag">Cloudflare</span>
+      <span class="tag">cPanel</span>
+    </div>
+  </div>
+
+  <!-- Bump Media -->
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Web Developer</span>
+      <span class="job-date">2018 — 2021</span>
+    </div>
+    <div class="job-company">Bump Media</div>
+    <ul class="job-bullets">
+      <li>Designed and developed WordPress sites and online stores for multiple clients.</li>
+      <li>Integrated payment gateways, configured plugins, and delivered client training on site administration.</li>
+    </ul>
+    <div class="job-stack">
+      <span class="tag">WordPress</span>
+      <span class="tag">WooCommerce</span>
+      <span class="tag">Elementor</span>
+      <span class="tag">Divi</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- EDUCATION -->
+<div class="section">
+  <div class="section-title">Education &amp; Certifications</div>
+
+  <div style="margin-bottom: 8px;">
+    <div class="edu-row">
+      <span class="edu-degree">B.S. Information Sciences</span>
+      <span class="edu-date">2006 — 2011</span>
+    </div>
+    <div class="edu-school">Universidad Politécnica Territorial Andrés Eloy Blanco</div>
+  </div>
+
+  <div style="margin-bottom: 8px;">
+    <div class="edu-row">
+      <span class="edu-degree">CCNA — Routing &amp; Switching</span>
+      <span class="edu-date">2016</span>
+    </div>
+    <div class="edu-school">Cisco Networking Academy / CEDEI</div>
+  </div>
+
+  <div>
+    <div class="edu-row">
+      <span class="edu-degree">Electronic Security Systems Installation</span>
+      <span class="edu-date">2012 — 2013</span>
+    </div>
+    <div class="edu-school">Academia de Software CADIF C.A</div>
+  </div>
+</div>
+
+</body>
+</html>
