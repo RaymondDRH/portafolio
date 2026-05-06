@@ -67,20 +67,20 @@ export default function Hero() {
     }
   }, [])
 
-  // GSAP entrance animation (progressive enhancement — content visible without it)
+  // GSAP entrance animation
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 })
     if (photoRef.current) {
-      tl.from(photoRef.current, { opacity: 0, x: -40, duration: 0.8, ease: 'power3.out' })
+      tl.fromTo(photoRef.current, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' })
     }
     if (headingRef.current) {
-      tl.from(headingRef.current, { opacity: 0, y: 30, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+      tl.fromTo(headingRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
     }
     if (subRef.current) {
-      tl.from(subRef.current, { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+      tl.fromTo(subRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
     }
     if (ctaRef.current) {
-      tl.from(ctaRef.current, { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.2')
+      tl.fromTo(ctaRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.2')
     }
   }, [])
 
@@ -113,7 +113,7 @@ export default function Hero() {
           <div className="flex-1 text-center md:text-left">
             <h1
               ref={headingRef}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 opacity-0"
             >
               <span className="text-text-muted text-2xl sm:text-3xl font-normal block mb-2">
                 Hi, I&apos;m
@@ -140,12 +140,12 @@ export default function Hero() {
 
             <p
               ref={subRef}
-              className="text-text-muted text-base sm:text-lg leading-relaxed max-w-xl mx-auto md:mx-0 mb-8"
+              className="text-text-muted text-base sm:text-lg leading-relaxed max-w-xl mx-auto md:mx-0 mb-8 opacity-0"
             >
               I turn complex ideas into working products, using AI as a force multiplier.
             </p>
 
-            <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start opacity-0">
               <button
                 onClick={() => scrollTo('#projects')}
                 className="px-8 py-3.5 bg-teal hover:bg-teal-dark text-white rounded-lg font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-teal/25 flex items-center gap-2 justify-center"
@@ -164,7 +164,7 @@ export default function Hero() {
           </div>
 
           {/* Photo */}
-          <div ref={photoRef} className="flex-shrink-0">
+          <div ref={photoRef} className="flex-shrink-0 opacity-0">
             <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80">
               {/* Rotating border */}
               <div
