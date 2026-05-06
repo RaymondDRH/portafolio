@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Github, Send, CheckCircle } from 'lucide-react'
+import { Mail, Code2, Send, CheckCircle } from 'lucide-react'
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
@@ -56,7 +56,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-text-muted hover:text-teal transition-colors font-medium"
             >
-              <Github size={18} />
+              <Code2 size={18} />
               RaymondDRH
             </a>
           </div>

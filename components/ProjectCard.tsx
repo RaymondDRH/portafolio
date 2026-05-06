@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Code2 } from 'lucide-react'
 import type { Project } from '@/lib/projects'
 
 type Props = {
@@ -83,7 +83,7 @@ export default function ProjectCard({ project, index }: Props) {
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-xs text-text-muted hover:text-teal transition-colors font-medium"
             >
-              <Github size={13} />
+              <Code2 size={13} />
               GitHub
             </a>
           )}
