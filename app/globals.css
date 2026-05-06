@@ -135,6 +135,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-shrink: 0;
   overflow: hidden;
 }
+.vsc-sidebar-backdrop {
+  display: none;
+}
 .vsc-sidebar-header {
   height: 35px;
   display: flex; align-items: center;
@@ -493,12 +496,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .vsc-sidebar { display: none; }
+  .vsc-sidebar { display: none !important; }
   .vsc-sidebar.mobile-open {
-    display: flex;
-    position: fixed; left: 48px; top: 35px; bottom: 22px;
+    display: flex !important;
+    position: fixed;
+    left: 48px; top: 35px; bottom: 22px;
     z-index: 100;
+    width: 240px;
     box-shadow: 4px 0 24px rgba(0,0,0,0.6);
+  }
+  .vsc-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: rgba(0,0,0,0.4);
   }
   .vsc-panel          { height: 200px; }
   .vsc-titlebar-right { display: none; }

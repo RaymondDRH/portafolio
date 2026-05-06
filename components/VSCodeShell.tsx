@@ -150,9 +150,12 @@ export default function VSCodeShell() {
       <div className="vsc-body">
         <ActivityBar sidebarOpen={sidebarOpen} onToggle={() => setSidebar(o => !o)} />
 
-        <div className={`vsc-sidebar${sidebarOpen ? '' : ' hidden'}`} style={{ display: sidebarOpen ? undefined : 'none' }}>
+        {sidebarOpen && (
+          <div className="vsc-sidebar-backdrop" onClick={() => setSidebar(false)} />
+        )}
+        <div className={`vsc-sidebar${sidebarOpen ? ' mobile-open' : ''}`} style={{ display: sidebarOpen ? undefined : 'none' }}>
           <div className="vsc-sidebar-header">Explorer</div>
-          <FileExplorer active={active} open={open} onOpen={openFile} />
+          <FileExplorer active={active} open={open} onOpen={(id) => { openFile(id); setSidebar(false) }} />
         </div>
 
         {/* Editor area */}
