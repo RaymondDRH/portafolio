@@ -135,7 +135,7 @@ const PROJECTS: Project[] = [
     blurb: 'AI-powered web presence SaaS that builds complete, production websites from a single prompt — auth, content, hosting and Stripe billing wired in.',
     tags: ['Next.js', 'Supabase', 'Stripe', 'Claude API'],
     visual: 'foundry',
-    liveUrl: 'https://getfoundry.app',
+    liveUrl: 'https://getfoundry.io',
   },
   {
     n: '02', name: 'CCEver Hub', status: 'live',
