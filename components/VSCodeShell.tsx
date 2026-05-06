@@ -53,12 +53,16 @@ export default function VSCodeShell() {
   const [active, setActive]       = useState<FileId>('home')
   const [open, setOpen]           = useState<FileId[]>(['home'])
   const [sidebarOpen, setSidebar] = useState(true)
-  const [panelOpen, setPanel]     = useState(true)
+  const [panelOpen, setPanel]     = useState(false)
   const [msgs, setMsgs]           = useState<Msg[]>([INIT_MSG])
   const [input, setInput]         = useState('')
   const [busy, setBusy]           = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (window.innerWidth >= 900) setPanel(true)
+  }, [])
 
   useEffect(() => {
     if (panelRef.current) panelRef.current.scrollTop = panelRef.current.scrollHeight

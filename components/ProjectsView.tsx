@@ -178,7 +178,7 @@ const PROJECTS: Project[] = [
 export default function ProjectsView() {
   return (
     <div>
-      <div style={{ padding: '24px 48px 20px' }}>
+      <div className="projects-view-header">
         <h2 className="projects-view-title">Projects</h2>
         <div className="projects-view-sub">// 7 production products shipped — real users, real auth, real billing</div>
       </div>

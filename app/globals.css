@@ -488,6 +488,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   90% { background: #1D9B8C !important; }
 }
 
+/* ── Projects View Header ── */
+.projects-view-header { padding: 24px 48px 20px; }
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .vsc-sidebar { display: none; }
@@ -497,19 +500,55 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     z-index: 100;
     box-shadow: 4px 0 24px rgba(0,0,0,0.6);
   }
-  .vsc-panel { height: 220px; }
-  .home-view  { padding: 24px 20px 40px; }
-  .home-name  { font-size: 38px; letter-spacing: -1.5px; }
-  .home-stats { gap: 28px; }
-  .home-stat-num { font-size: 28px; }
-  .skills-view { padding: 20px 20px 40px; }
-  .skill-groups { grid-template-columns: 1fr 1fr; }
-  .about-content { padding: 16px 20px 40px; }
-  .projects-grid-vsc { grid-template-columns: 1fr; padding: 0 20px; }
+  .vsc-panel          { height: 200px; }
+  .vsc-titlebar-right { display: none; }
+
+  /* Home */
+  .home-view      { padding: 24px 20px 40px; }
+  .home-name      { font-size: 36px; letter-spacing: -1px; }
+  .home-stats     { gap: 24px; }
+  .home-stat-num  { font-size: 26px; }
+  .home-ctas      { flex-direction: column; align-items: flex-start; }
+  .home-cta-btn   { width: 100%; justify-content: center; }
+
+  /* Projects */
+  .projects-view-header   { padding: 20px 20px 16px; }
+  .projects-grid-vsc      { grid-template-columns: 1fr; padding: 0 20px; }
+
+  /* Skills */
+  .skills-view    { padding: 20px 20px 40px; }
+  .skill-groups   { grid-template-columns: 1fr 1fr; }
+
+  /* About */
+  .about-content  { padding: 16px 20px 40px; max-width: 100%; }
+
+  /* Contact */
+  .contact-channels { margin: 16px 0 0; }
 }
+
 @media (max-width: 480px) {
-  .vsc-titlebar-center { font-size: 11px; }
-  .vsc-sidebar { width: 200px; }
-  .home-name  { font-size: 30px; }
-  .skill-groups { grid-template-columns: 1fr; }
+  .vsc-activitybar    { width: 40px; }
+  .vsc-actbar-btn     { width: 40px; }
+  .vsc-sidebar        { width: 220px; }
+  .vsc-titlebar-center { font-size: 11px; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* Home */
+  .home-name      { font-size: 28px; letter-spacing: -0.5px; }
+  .home-role      { font-size: 13px; }
+  .home-bio       { font-size: 13.5px; }
+  .home-stats     { gap: 20px; }
+  .home-stat-num  { font-size: 24px; }
+
+  /* Projects */
+  .projects-view-header { padding: 16px 16px 12px; }
+  .projects-grid-vsc    { padding: 0 16px; }
+
+  /* Skills / About / Contact */
+  .skills-view    { padding: 16px 16px 32px; }
+  .skill-groups   { grid-template-columns: 1fr; }
+  .about-content  { padding: 14px 16px 32px; }
+
+  /* Status bar — hide non-essential items */
+  .vsc-statusbar-right .vsc-status-item:not(.vsc-nova-btn) { display: none; }
+  .vsc-nova-btn { display: flex !important; }
 }
