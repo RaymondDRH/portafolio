@@ -178,10 +178,9 @@ const PROJECTS: Project[] = [
 export default function ProjectsView() {
   return (
     <div>
-      <div className="projects-header">
-        <span className="cm" style={{ fontFamily: 'var(--font-mono)', fontSize: 13 }}>
-          // projects.js — 7 production products shipped
-        </span>
+      <div style={{ padding: '24px 48px 20px' }}>
+        <h2 className="projects-view-title">Projects</h2>
+        <div className="projects-view-sub">// 7 production products shipped — real users, real auth, real billing</div>
       </div>
       <div className="projects-grid-vsc">
         {PROJECTS.map((p) => (

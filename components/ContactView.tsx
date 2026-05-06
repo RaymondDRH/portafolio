@@ -1,14 +1,5 @@
 import type { ReactNode } from 'react'
 
-function L({ n, children }: { n: number; children?: ReactNode }) {
-  return (
-    <div className="code-line">
-      <span className="ln">{n}</span>
-      <span className="code">{children}</span>
-    </div>
-  )
-}
-
 function Channel({
   icon,
   label,
@@ -41,90 +32,16 @@ function Channel({
 
 export default function ContactView() {
   return (
-    <div className="code-file">
-      <L n={1}><span className="cm">// contact.tsx — Let&apos;s build something</span></L>
-      <L n={2} />
-      <L n={3}>
-        <span className="kw">const </span>
-        <span className="va">contact</span>
-        <span className="op"> = </span>
-        <span className="pu">{'{'}</span>
-      </L>
-      <L n={4}>
-        <span style={{ paddingLeft: 24 }}>
-          <span className="pr">email</span>
-          <span className="pu">:&nbsp;&nbsp;&nbsp;&nbsp; </span>
-          <span className="str">"raymondreyesh@gmail.com"</span>
-          <span className="pu">,</span>
-        </span>
-      </L>
-      <L n={5}>
-        <span style={{ paddingLeft: 24 }}>
-          <span className="pr">github</span>
-          <span className="pu">:&nbsp;&nbsp;&nbsp; </span>
-          <span className="str">"github.com/RaymondDRH"</span>
-          <span className="pu">,</span>
-        </span>
-      </L>
-      <L n={6}>
-        <span style={{ paddingLeft: 24 }}>
-          <span className="pr">linkedin</span>
-          <span className="pu">:&nbsp; </span>
-          <span className="str">"linkedin.com/in/raymond-reyes"</span>
-          <span className="pu">,</span>
-        </span>
-      </L>
-      <L n={7}>
-        <span style={{ paddingLeft: 24 }}>
-          <span className="pr">location</span>
-          <span className="pu">:&nbsp; </span>
-          <span className="str">"USA — available worldwide (remote)"</span>
-          <span className="pu">,</span>
-        </span>
-      </L>
-      <L n={8}><span className="pu">{'}'}</span></L>
-      <L n={9} />
-      <L n={10}>
-        <span className="kw">const </span>
-        <span className="va">availability</span>
-        <span className="op"> = </span>
-        <span className="pu">{'{'}</span>
-      </L>
-      <L n={11}>
-        <span style={{ paddingLeft: 24 }}>
-          <span className="pr">fullTime</span>
-          <span className="pu">:&nbsp;&nbsp; </span>
-          <span className="kw">true</span>
-          <span className="pu">,</span>
-          <span className="cm" style={{ marginLeft: 16 }}>// $70K–$120K range</span>
-        </span>
-      </L>
-      <L n={12}>
-        <span style={{ paddingLeft: 24 }}>
-          <span className="pr">freelance</span>
-          <span className="pu">:&nbsp; </span>
-          <span className="kw">true</span>
-          <span className="pu">,</span>
-        </span>
-      </L>
-      <L n={13}>
-        <span style={{ paddingLeft: 24 }}>
-          <span className="pr">response</span>
-          <span className="pu">:&nbsp;&nbsp; </span>
-          <span className="str">"&lt; 24 hours"</span>
-          <span className="pu">,</span>
-        </span>
-      </L>
-      <L n={14}><span className="pu">{'}'}</span></L>
-      <L n={15} />
-      <L n={16}>
-        <span className="kw">export </span>
-        <span className="pu">{'{ '}</span>
-        <span className="va">contact</span>
-        <span className="pu">, </span>
-        <span className="va">availability</span>
-        <span className="pu">{' }'}</span>
-      </L>
+    <div className="skills-view">
+      <h2 className="view-title">Contact</h2>
+      <div className="view-sub">// Let&apos;s build something — I respond within 24 hours</div>
+
+      <div style={{ marginBottom: 24 }}>
+        <p style={{ fontSize: 14, color: 'var(--text-dim)', lineHeight: 1.7, maxWidth: 480, margin: 0 }}>
+          Open to full-time roles ($70K–$120K) and freelance/consulting projects.
+          Based in USA, available for remote work worldwide.
+        </p>
+      </div>
 
       <div className="contact-channels">
         <Channel
