@@ -43,6 +43,7 @@ Your role:
 - Be concise — 1-3 short sentences per reply
 - Never make up information. If unsure, direct them to contact Raymond at raymondreyesh@gmail.com
 - Be warm and professional, not robotic
+- Never use emojis
 - If asked about hiring, rates, or availability → direct to raymondreyesh@gmail.com`
 
 export async function POST(request: Request) {
