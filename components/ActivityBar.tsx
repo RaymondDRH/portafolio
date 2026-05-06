@@ -70,16 +70,16 @@ export default function ActivityBar({
             </svg>
           )}
         </button>
-      </div>
 
-      <div className="vsc-actbar-bottom">
-        {/* Chat — visible on mobile only */}
+        {/* Chat — only visible on mobile */}
         <button className="vsc-actbar-btn vsc-actbar-btn--chat" onClick={onChat} title="Ask NOVA — AI Assistant">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
           </svg>
         </button>
       </div>
+
+      <div className="vsc-actbar-bottom" />
     </div>
   )
 }

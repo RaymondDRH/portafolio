@@ -156,7 +156,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .vsc-actbar-top    { flex: 1; display: flex; flex-direction: column; align-items: center; }
 .vsc-actbar-bottom { display: none; flex-direction: column; align-items: center; padding-bottom: 4px; }
-.vsc-actbar-btn--chat { color: var(--accent-2) !important; }
+.vsc-actbar-btn--chat { display: none; color: var(--accent-2) !important; }
 .vsc-actbar-btn--chat:hover { color: #fff !important; }
 .vsc-actbar-btn {
   width: 48px; height: 48px;
@@ -616,7 +616,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .vsc-actbar-bottom { display: flex; }
+  .vsc-actbar-btn--chat { display: flex; }
   .vsc-sidebar { display: none !important; }
   .vsc-sidebar.mobile-open {
     display: flex !important;
