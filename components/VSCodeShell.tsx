@@ -60,9 +60,6 @@ export default function VSCodeShell() {
   const panelRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if (window.innerWidth >= 900) setPanel(true)
-  }, [])
 
   useEffect(() => {
     if (panelRef.current) panelRef.current.scrollTop = panelRef.current.scrollHeight
@@ -176,6 +173,14 @@ export default function VSCodeShell() {
                 <EditorView id={active} />
               </div>
             </div>
+
+            {!panelOpen && (
+              <button className="vsc-panel-hint" onClick={() => setPanel(true)}>
+                <span className="vsc-panel-hint-dot" />
+                <span>✦ Ask RAY — Chat with Raymond&apos;s AI assistant</span>
+                <span className="vsc-panel-hint-arrow">↑</span>
+              </button>
+            )}
 
             {panelOpen && (
               <div className="vsc-panel">

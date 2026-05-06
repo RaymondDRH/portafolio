@@ -461,6 +461,26 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .contact-channel-label { font-size: 10.5px; font-family: var(--font-mono); color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
 .contact-channel-value { font-size: 13.5px; color: var(--text-bright); font-family: var(--font-mono); }
 
+/* ── Panel Hint Bar ── */
+.vsc-panel-hint {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; padding: 0 16px;
+  height: 32px; flex-shrink: 0;
+  background: rgba(29,155,140,0.08);
+  border: none; border-top: 1px solid rgba(29,155,140,0.25);
+  color: var(--accent); cursor: pointer;
+  font-family: var(--font-mono); font-size: 12px;
+  text-align: left;
+  transition: background 0.15s;
+}
+.vsc-panel-hint:hover { background: rgba(29,155,140,0.16); }
+.vsc-panel-hint-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+  animation: nova-pulse 2s ease-in-out infinite;
+}
+.vsc-panel-hint-arrow { margin-left: auto; font-size: 14px; opacity: 0.7; }
+
 /* ── Ask RAY Button ── */
 .vsc-nova-btn {
   background: #1D9B8C !important;
