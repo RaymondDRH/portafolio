@@ -61,7 +61,7 @@ export default function AboutView() {
 
       <h2 className="md-h2">Availability</h2>
       <ul className="md-ul">
-        <li>Open to <span className="md-strong">full-time roles</span> — <code className="md-code">$70K–$120K</code> range</li>
+        <li>Open to <span className="md-strong">full-time roles</span> — competitive salary, aligned with AI-First developer market</li>
         <li>Available for <span className="md-strong">freelance / consulting</span> projects</li>
         <li>Based in <span className="md-strong">USA</span> · 100% remote</li>
         <li>Response time: <code className="md-code">&lt; 24 hours</code></li>

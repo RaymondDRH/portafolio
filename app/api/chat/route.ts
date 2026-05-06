@@ -29,7 +29,7 @@ Projects shipped (7 total):
 7. Client Portal — Lightweight portal for project status, deliverable approvals, and magic-link auth.
 
 Availability & Rates:
-- Open to full-time developer roles: $70K–$120K range
+- Open to full-time developer roles: competitive salary, aligned with AI-First developer market
 - Available for freelance and consulting projects
 - Response time: under 24 hours
 - Contact: raymondreyesh@gmail.com
