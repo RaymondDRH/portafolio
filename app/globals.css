@@ -516,6 +516,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+  .vsc-actbar-bottom { display: none; }
   .vsc-sidebar { display: none !important; }
   .vsc-sidebar.mobile-open {
     display: flex !important;
