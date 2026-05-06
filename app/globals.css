@@ -39,6 +39,11 @@ html, body { height: 100%; overflow: hidden; }
 }
 
 /* ── Light Theme ── */
+[data-theme="light"] .vsc-activitybar { background: #2c2c2c; }
+[data-theme="light"] .vsc-actbar-btn  { color: #aaaaaa; }
+[data-theme="light"] .vsc-actbar-btn:hover  { color: #ffffff; }
+[data-theme="light"] .vsc-actbar-btn.active { color: #ffffff; }
+
 [data-theme="light"] {
   --editor-bg:    #ffffff;
   --sidebar-bg:   #f3f3f3;
@@ -139,14 +144,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: color 0.15s;
   text-decoration: none;
 }
-.vsc-actbar-btn:hover { color: var(--text); }
-.vsc-actbar-btn.active { color: var(--text-bright); }
+.vsc-actbar-btn:hover { color: #cccccc; }
+.vsc-actbar-btn.active { color: #ffffff; }
 .vsc-actbar-btn.active::before {
   content: '';
   position: absolute;
   left: 0; top: 0; bottom: 0;
   width: 2px;
-  background: var(--text-bright);
+  background: #ffffff;
 }
 
 /* ── Sidebar ── */
