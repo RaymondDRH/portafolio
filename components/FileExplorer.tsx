@@ -48,11 +48,6 @@ export default function FileExplorer({
         </div>
 
         <div className="vsc-explorer-label" style={{ paddingLeft: 24, fontSize: 12 }}>
-          <span style={{ fontSize: 9 }}>▸</span>
-          <span style={{ color: 'var(--text-faint)' }}>.github</span>
-        </div>
-
-        <div className="vsc-explorer-label" style={{ paddingLeft: 24, fontSize: 12 }}>
           <span style={{ fontSize: 9 }}>▾</span>
           src
         </div>

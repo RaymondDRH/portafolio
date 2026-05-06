@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     'Raymond Reyes',
     'raymondreyes.dev',
   ],
-  authors: [{ name: 'Raymond Reyes', url: 'https://raymondreyes.dev' }],
+  authors: [{ name: 'Raymond Reyes' }],
   metadataBase: new URL('https://raymondreyes.dev'),
   alternates: { canonical: '/' },
   robots: { index: true, follow: true },

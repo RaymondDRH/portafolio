@@ -512,6 +512,33 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .contact-channel-label { font-size: 10.5px; font-family: var(--font-mono); color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
 .contact-channel-value { font-size: 13.5px; color: var(--text-bright); font-family: var(--font-mono); }
 
+/* ── Mobile Chat FAB ── */
+.mobile-chat-fab {
+  display: none;
+  position: fixed;
+  bottom: 32px; right: 20px;
+  z-index: 90;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none; cursor: pointer;
+  color: #fff;
+  align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(29,155,140,0.45);
+  transition: background 0.15s, transform 0.15s;
+}
+.mobile-chat-fab:hover { background: var(--accent-2); transform: scale(1.05); }
+.mobile-chat-fab-dot {
+  position: absolute; top: 10px; right: 10px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #b5cea8;
+  animation: nova-pulse 2s ease-in-out infinite;
+  border: 2px solid var(--accent);
+}
+@media (max-width: 900px) {
+  .mobile-chat-fab { display: flex; }
+}
+
 /* ── Command Palette ── */
 .cp-backdrop {
   position: fixed; inset: 0; z-index: 200;

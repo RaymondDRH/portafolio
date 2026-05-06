@@ -33,7 +33,6 @@ Availability & Rates:
 - Available for freelance and consulting projects
 - Response time: under 24 hours
 - Contact: raymondreyesh@gmail.com
-- GitHub: github.com/RaymondDRH
 - Portfolio: raymondreyes.dev
 
 Your role:
