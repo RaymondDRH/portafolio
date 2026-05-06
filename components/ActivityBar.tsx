@@ -49,9 +49,7 @@ export default function ActivityBar({
             <path d="M13 17.5h9M17.5 13v9" />
           </svg>
         </button>
-      </div>
 
-      <div className="vsc-actbar-bottom">
         {/* Account */}
         <button className="vsc-actbar-btn" title="Raymond Reyes" style={{ opacity: 0.5, cursor: 'default' }}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -68,6 +66,8 @@ export default function ActivityBar({
           </svg>
         </button>
       </div>
+
+      <div className="vsc-actbar-bottom" />
     </div>
   )
 }
