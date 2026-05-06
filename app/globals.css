@@ -512,31 +512,33 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .contact-channel-label { font-size: 10.5px; font-family: var(--font-mono); color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
 .contact-channel-value { font-size: 13.5px; color: var(--text-bright); font-family: var(--font-mono); }
 
-/* ── Mobile Chat FAB ── */
-.mobile-chat-fab {
+/* ── Robot FAB ── */
+.robot-fab {
   display: none;
   position: fixed;
-  bottom: 32px; right: 20px;
+  bottom: 28px; right: 16px;
   z-index: 90;
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: none; cursor: pointer;
-  color: #fff;
-  align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(29,155,140,0.45);
-  transition: background 0.15s, transform 0.15s;
+  background: none; border: none;
+  cursor: pointer; padding: 0;
+  filter: drop-shadow(0 4px 16px rgba(29,155,140,0.35));
+  transition: filter 0.2s, transform 0.2s;
 }
-.mobile-chat-fab:hover { background: var(--accent-2); transform: scale(1.05); }
-.mobile-chat-fab-dot {
-  position: absolute; top: 10px; right: 10px;
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #b5cea8;
-  animation: nova-pulse 2s ease-in-out infinite;
-  border: 2px solid var(--accent);
+.robot-fab:hover {
+  filter: drop-shadow(0 4px 24px rgba(43,212,189,0.6));
+  transform: scale(1.06);
+}
+.robot-svg { animation: robot-float 3.5s ease-in-out infinite; }
+.robot-antenna-dot { animation: antenna-pulse 2.5s ease-in-out infinite; }
+@keyframes robot-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+@keyframes antenna-pulse {
+  0%, 100% { opacity: 1; r: 2.5; }
+  50%       { opacity: 0.4; r: 1.5; }
 }
 @media (max-width: 900px) {
-  .mobile-chat-fab { display: flex; }
+  .robot-fab { display: block; }
 }
 
 /* ── Command Palette ── */

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import ActivityBar from './ActivityBar'
 import CommandPalette from './CommandPalette'
+import RobotFAB from './RobotFAB'
 import FileExplorer from './FileExplorer'
 import TabBar from './TabBar'
 import StatusBar from './StatusBar'
@@ -264,14 +265,7 @@ export default function VSCodeShell() {
         </div>
       </div>
 
-      {!panelOpen && (
-        <button className="mobile-chat-fab" onClick={() => setPanel(true)} aria-label="Open AI chat">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-          </svg>
-          <span className="mobile-chat-fab-dot" />
-        </button>
-      )}
+      {!panelOpen && <RobotFAB onClick={() => setPanel(true)} />}
 
       <StatusBar lang={meta.language} panelOpen={panelOpen} onTerminal={() => setPanel(o => !o)} />
     </div>
