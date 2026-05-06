@@ -1,63 +1,72 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { X, Send, Bot } from 'lucide-react'
 import RayMascot from './RayMascot'
 
 type Message = {
-  role: 'user' | 'assistant'
-  content: string
+  role: 'user' | 'bot'
+  text: string
 }
 
-const INITIAL_MESSAGE: Message = {
-  role: 'assistant',
-  content: "Hi! I'm RAY, Raymond's AI assistant. Ask me anything about his experience, projects, or how he can help you. 🤖",
+const SUGGESTIONS = [
+  'What does Raymond build?',
+  'Is he available for freelance?',
+  "What's his AI stack?",
+  'Show me his best project',
+]
+
+const INITIAL: Message = {
+  role: 'bot',
+  text: "Hey 👋 I'm NOVA, Raymond's AI assistant. Ask me anything about his work, stack, or availability.",
 }
 
 export default function AIChatbot() {
   const [open, setOpen] = useState(false)
-  const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE])
+  const [messages, setMessages] = useState<Message[]>([INITIAL])
   const [input, setInput] = useState('')
-  const [loading, setLoading] = useState(false)
-  const bottomRef = useRef<HTMLDivElement>(null)
+  const [busy, setBusy] = useState(false)
+  const bodyRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    if (open) {
-      setTimeout(() => inputRef.current?.focus(), 300)
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current.scrollHeight
     }
-  }, [open])
+  }, [messages, busy])
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages, loading])
+    if (open) setTimeout(() => inputRef.current?.focus(), 200)
+  }, [open])
 
-  const send = async () => {
-    const text = input.trim()
-    if (!text || loading) return
+  const send = async (text?: string) => {
+    const q = (text ?? input).trim()
+    if (!q || busy) return
+
+    const userMsg: Message = { role: 'user', text: q }
+    const newMessages = [...messages, userMsg]
+    setMessages(newMessages)
     setInput('')
-    const userMsg: Message = { role: 'user', content: text }
-    setMessages((prev) => [...prev, userMsg])
-    setLoading(true)
+    setBusy(true)
 
     try {
+      const apiMessages = newMessages
+        .filter((m, i) => !(m.role === 'bot' && i === 0))
+        .map((m) => ({ role: m.role === 'bot' ? 'assistant' : 'user', content: m.text }))
+
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: [...messages, userMsg].filter((m) => m.role !== 'assistant' || m !== INITIAL_MESSAGE),
-        }),
+        body: JSON.stringify({ messages: apiMessages }),
       })
       const data = await res.json()
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.content }])
+      setMessages((prev) => [...prev, { role: 'bot', text: data.content }])
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', content: 'Sorry, something went wrong. Try again in a moment.' },
+        { role: 'bot', text: 'Hmm, something went wrong. Try emailing Raymond directly at raymondreyesh@gmail.com.' },
       ])
     } finally {
-      setLoading(false)
+      setBusy(false)
     }
   }
 
@@ -65,104 +74,72 @@ export default function AIChatbot() {
     <>
       <RayMascot onOpen={() => setOpen(true)} isOpen={open} />
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ duration: 0.25, type: 'spring', stiffness: 300, damping: 25 }}
-            className="fixed bottom-6 right-6 z-50 w-[340px] sm:w-[380px] h-[500px] flex flex-col rounded-2xl border border-teal/30 bg-navy shadow-2xl shadow-black/50 overflow-hidden"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-navy-mid border-b border-border">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-teal/10 border border-teal/30 flex items-center justify-center">
-                  <Bot size={16} className="text-teal" />
-                </div>
-                <div>
-                  <p className="text-text text-sm font-semibold">RAY</p>
-                  <p className="text-text-muted text-[10px]">Raymond&apos;s AI assistant</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
-                <span className="text-[10px] text-text-muted">Online</span>
-                <button
-                  onClick={() => setOpen(false)}
-                  className="ml-2 text-text-muted hover:text-text transition-colors"
-                >
-                  <X size={18} />
-                </button>
-              </div>
+      {open && (
+        <div className="chat-panel" role="dialog" aria-label="Chat with NOVA">
+          <div className="chat-head">
+            <div className="chat-avatar">
+              <svg width="20" height="20" viewBox="0 0 80 80" fill="none" style={{ color: 'white' }}>
+                <line x1="40" y1="14" x2="40" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="40" cy="12" r="2.5" fill="currentColor" />
+                <rect x="22" y="22" width="36" height="30" rx="6" stroke="currentColor" strokeWidth="2" />
+                <circle cx="32" cy="36" r="2.5" fill="currentColor" />
+                <circle cx="48" cy="36" r="2.5" fill="currentColor" />
+                <line x1="34" y1="44" x2="46" y2="44" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.6" strokeLinecap="round" />
+              </svg>
             </div>
+            <div className="chat-head-text">
+              <b>NOVA</b>
+              <small>online · trained on Raymond</small>
+            </div>
+            <button className="chat-close" onClick={() => setOpen(false)} aria-label="Close chat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3">
-              {messages.map((msg, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                >
-                  <div
-                    className={`max-w-[80%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
-                      msg.role === 'user'
-                        ? 'bg-teal text-white rounded-br-sm'
-                        : 'bg-navy-mid border border-border text-text-muted rounded-bl-sm'
-                    }`}
-                  >
-                    {msg.content}
-                  </div>
-                </motion.div>
+          <div className="chat-body" ref={bodyRef}>
+            {messages.map((m, i) => (
+              <div key={i} className={`msg ${m.role}`}>{m.text}</div>
+            ))}
+            {busy && (
+              <div className="msg bot typing">
+                <span /><span /><span />
+              </div>
+            )}
+          </div>
+
+          {messages.length <= 1 && (
+            <div className="chat-suggest">
+              {SUGGESTIONS.map((s) => (
+                <button key={s} onClick={() => send(s)}>{s}</button>
               ))}
-
-              {loading && (
-                <div className="flex justify-start">
-                  <div className="bg-navy-mid border border-border px-4 py-3 rounded-2xl rounded-bl-sm">
-                    <div className="flex gap-1.5">
-                      {[0, 1, 2].map((i) => (
-                        <motion.div
-                          key={i}
-                          className="w-1.5 h-1.5 bg-teal rounded-full"
-                          animate={{ y: [0, -4, 0] }}
-                          transition={{ repeat: Infinity, duration: 0.6, delay: i * 0.15 }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-              <div ref={bottomRef} />
             </div>
+          )}
 
-            {/* Input */}
-            <div className="px-4 py-3 border-t border-border bg-navy-mid">
-              <div className="flex gap-2">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && send()}
-                  placeholder="Ask anything..."
-                  disabled={loading}
-                  className="flex-1 bg-navy border border-border rounded-xl px-3 py-2 text-sm text-text placeholder-text-muted/50 focus:outline-none focus:border-teal transition-colors disabled:opacity-50"
-                />
-                <button
-                  onClick={send}
-                  disabled={loading || !input.trim()}
-                  className="w-9 h-9 flex items-center justify-center bg-teal hover:bg-teal-dark rounded-xl text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  <Send size={15} />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          <div className="chat-input-row">
+            <input
+              ref={inputRef}
+              className="chat-input"
+              placeholder="Ask about Raymond's work..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && send()}
+              disabled={busy}
+            />
+            <button
+              className="chat-send"
+              onClick={() => send()}
+              disabled={busy || !input.trim()}
+              aria-label="Send"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </>
   )
 }

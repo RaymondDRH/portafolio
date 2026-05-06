@@ -1,16 +1,23 @@
 import type { Metadata } from 'next'
-import { Geist } from 'next/font/google'
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const geist = Geist({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-sans',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--sg',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--jb',
 })
 
 export const metadata: Metadata = {
   title: 'Raymond Reyes — AI-First Full-Stack Developer',
   description:
-    'I turn complex ideas into working products, using AI as a force multiplier. Full-stack developer specializing in Next.js, Supabase, and AI integrations.',
+    'AI-first full-stack developer and founder of AICrafterLab. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
   keywords: [
     'AI developer',
     'full-stack developer',
@@ -25,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Raymond Reyes — AI-First Full-Stack Developer',
     description:
-      'I turn complex ideas into working products, using AI as a force multiplier.',
+      'AI-first full-stack developer and founder of AICrafterLab. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
     url: 'https://raymondreyes.dev',
     siteName: 'Raymond Reyes',
     type: 'website',
@@ -34,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Raymond Reyes — AI-First Full-Stack Developer',
     description:
-      'I turn complex ideas into working products, using AI as a force multiplier.',
+      'AI-first full-stack developer and founder of AICrafterLab. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
   },
 }
 
@@ -44,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={geist.variable}>
-      <body>{children}</body>
+    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+      <body data-density="normal">{children}</body>
     </html>
   )
 }
