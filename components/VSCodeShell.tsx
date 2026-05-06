@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import ActivityBar from './ActivityBar'
 import CommandPalette from './CommandPalette'
-import RobotFAB from './RobotFAB'
 import FileExplorer from './FileExplorer'
 import TabBar from './TabBar'
 import StatusBar from './StatusBar'
@@ -67,8 +66,11 @@ export default function VSCodeShell() {
   const [msgs, setMsgs]           = useState<Msg[]>([INIT_MSG])
   const [input, setInput]         = useState('')
   const [busy, setBusy]           = useState(false)
+  const [chatModal, setChatModal] = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const modalInputRef = useRef<HTMLInputElement>(null)
 
 
   useEffect(() => {
@@ -77,7 +79,12 @@ export default function VSCodeShell() {
 
   useEffect(() => {
     if (panelRef.current) panelRef.current.scrollTop = panelRef.current.scrollHeight
+    if (modalRef.current) modalRef.current.scrollTop = modalRef.current.scrollHeight
   }, [msgs, busy])
+
+  useEffect(() => {
+    if (chatModal && modalInputRef.current) modalInputRef.current.focus()
+  }, [chatModal])
 
   const openFile = useCallback((id: FileId) => {
     setOpen(prev => (prev.includes(id) ? prev : [...prev, id]))
@@ -171,6 +178,7 @@ export default function VSCodeShell() {
           onSkills={() => openFile('skills')}
           onContact={() => openFile('contact')}
           onTheme={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
+          onChat={() => setChatModal(true)}
           theme={theme}
         />
 
@@ -265,7 +273,51 @@ export default function VSCodeShell() {
         </div>
       </div>
 
-      {!panelOpen && <RobotFAB onClick={() => setPanel(true)} />}
+      {chatModal && (
+        <div className="chat-modal-overlay" onClick={() => setChatModal(false)}>
+          <div className="chat-modal" onClick={e => e.stopPropagation()}>
+            <div className="chat-modal-header">
+              <span className="chat-modal-title">✦ NOVA — AI Assistant</span>
+              <button className="chat-modal-close" onClick={() => setChatModal(false)}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="chat-modal-body" ref={modalRef}>
+              {msgs.map((m, i) => (
+                <div key={i} className="term-msg">
+                  {m.role === 'user' ? (
+                    <><span className="term-you">you ›</span><span className="term-user-text">{m.text}</span></>
+                  ) : (
+                    <><span className="term-nova">NOVA</span><span className="term-bot-text">{m.text}</span></>
+                  )}
+                </div>
+              ))}
+              {busy && <div className="term-typing">NOVA is typing...</div>}
+              {msgs.length <= 1 && (
+                <div className="term-suggestions">
+                  {SUGGESTIONS.map(s => (
+                    <button key={s} className="term-suggest-btn" onClick={() => send(s)}>{s}</button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="chat-modal-input-row">
+              <span className="term-input-prompt">you ›</span>
+              <input
+                ref={modalInputRef}
+                className="chat-modal-input"
+                placeholder="ask NOVA anything..."
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && send()}
+                disabled={busy}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       <StatusBar lang={meta.language} panelOpen={panelOpen} onTerminal={() => setPanel(o => !o)} />
     </div>
