@@ -1,5 +1,5 @@
 const stroke = 'var(--accent)'
-const dim = 'rgba(226,232,240,0.25)'
+const dim = 'rgba(204,204,204,0.2)'
 
 function ProjectVisual({ kind }: { kind: string }) {
   switch (kind) {
@@ -19,7 +19,7 @@ function ProjectVisual({ kind }: { kind: string }) {
           <rect x="350" y="60" width="210" height="80" rx="8" fill="rgba(29,155,140,0.08)" stroke={stroke} />
           <text x="362" y="80" fill="var(--text)" fontFamily="var(--font-mono)" fontSize="10">$ build me a saas landing</text>
           <text x="362" y="98" fill="var(--text-dim)" fontFamily="var(--font-mono)" fontSize="9">→ generating components...</text>
-          <text x="362" y="114" fill="var(--accent-2)" fontFamily="var(--font-mono)" fontSize="9">✓ deployed in 47s</text>
+          <text x="362" y="114" fill="var(--accent-2,#2BD4BD)" fontFamily="var(--font-mono)" fontSize="9">✓ deployed in 47s</text>
           <rect x="362" y="124" width="120" height="6" rx="3" fill={stroke} opacity="0.6" />
         </svg>
       )
@@ -67,7 +67,7 @@ function ProjectVisual({ kind }: { kind: string }) {
               <rect width="220" height="28" rx="6" fill="rgba(255,255,255,0.03)" stroke={dim} />
               <rect x="12" y="9" width="80" height="10" rx="2" fill="var(--text)" opacity="0.7" />
               <rect x="100" y="11" width="50" height="6" rx="2" fill={dim} />
-              <circle cx={185 + (i % 2) * 8} cy="14" r="4" fill={i < 2 ? stroke : '#666'} />
+              <circle cx={185 + (i % 2) * 8} cy="14" r="4" fill={i < 2 ? stroke : '#555'} />
             </g>
           ))}
         </svg>
@@ -123,9 +123,6 @@ type Project = {
   n: string
   name: string
   status: 'live' | 'built'
-  featured?: boolean
-  wide?: boolean
-  narrow?: boolean
   blurb: string
   tags: string[]
   visual: string
@@ -134,20 +131,20 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    n: '01', name: 'Foundry', status: 'live', featured: true,
+    n: '01', name: 'Foundry', status: 'live',
     blurb: 'AI-powered web presence SaaS that builds complete, production websites from a single prompt — auth, content, hosting and Stripe billing wired in.',
     tags: ['Next.js', 'Supabase', 'Stripe', 'Claude API'],
     visual: 'foundry',
     liveUrl: 'https://foundry.aicrafterlab.com',
   },
   {
-    n: '02', name: 'CCEver Hub', status: 'live', wide: true,
+    n: '02', name: 'CCEver Hub', status: 'live',
     blurb: 'Church management platform with WebAuthn passkey auth and a WhatsApp automation bot that handles announcements, attendance, and reminders.',
     tags: ['Next.js', 'Supabase', 'Baileys', 'WebAuthn'],
     visual: 'cc',
   },
   {
-    n: '03', name: 'AI Invoice Generator', status: 'built', narrow: true,
+    n: '03', name: 'AI Invoice Generator', status: 'built',
     blurb: 'Generates polished PDF invoices from a sentence, using Claude.',
     tags: ['Next.js', 'Claude API'],
     visual: 'invoice',
@@ -161,7 +158,7 @@ const PROJECTS: Project[] = [
   {
     n: '05', name: 'n8n Automation Showcase', status: 'built',
     blurb: 'A gallery of real production workflows: WhatsApp bots, CRM integrations, AI pipelines.',
-    tags: ['n8n', 'Next.js', 'webhooks'],
+    tags: ['n8n', 'Next.js', 'Webhooks'],
     visual: 'n8n',
   },
   {
@@ -178,61 +175,47 @@ const PROJECTS: Project[] = [
   },
 ]
 
-export default function Projects() {
+export default function ProjectsView() {
   return (
-    <section id="projects" style={{ paddingBlock: 'var(--section-py)' }}>
-      <div className="container">
-        <div className="projects-head">
-          <div>
-            <div className="eyebrow reveal">02 — Selected work</div>
-            <h2 className="section-title reveal reveal-delay-1">Things I&apos;ve actually <em>shipped.</em></h2>
-          </div>
-          <p className="section-lede reveal reveal-delay-2">
-            Seven products in production. Real auth, real billing, real users. Each one is end-to-end — from prompt chains to deploy.
-          </p>
-        </div>
-        <div className="projects-grid">
-          {PROJECTS.map((p, i) => (
-            <article
-              key={p.n}
-              className={[
-                'project',
-                `reveal reveal-delay-${(i % 4) + 1}`,
-                p.featured ? 'featured' : '',
-                p.wide ? 'wide' : '',
-                p.narrow ? 'narrow' : '',
-              ].filter(Boolean).join(' ')}
-            >
-              <div className="project-head">
-                <span className="project-num">PRJ_{p.n}</span>
-                <span className={`project-status ${p.status}`}>● {p.status}</span>
-              </div>
-              <div className="project-visual">
-                <ProjectVisual kind={p.visual} />
-              </div>
-              <h3>{p.name}</h3>
-              <p>{p.blurb}</p>
-              <div className="project-foot">
-                <div className="project-tags">
-                  {p.tags.map((t) => (
-                    <span key={t} className="tag">{t}</span>
-                  ))}
-                </div>
-                {'liveUrl' in p && p.liveUrl ? (
-                  <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="project-link">
-                    View live{' '}
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M7 17L17 7M17 7H8M17 7V16" />
-                    </svg>
-                  </a>
-                ) : (
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-faint)' }}>Built ✓</span>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
+    <div>
+      <div className="projects-header">
+        <span className="cm" style={{ fontFamily: 'var(--font-mono)', fontSize: 13 }}>
+          // projects.js — 7 production products shipped
+        </span>
       </div>
-    </section>
+      <div className="projects-grid-vsc">
+        {PROJECTS.map((p) => (
+          <div key={p.n} className="proj-card">
+            <div className="proj-card-visual">
+              <ProjectVisual kind={p.visual} />
+            </div>
+            <div className="proj-card-body">
+              <div className="proj-card-head">
+                <span className="proj-card-name">{p.name}</span>
+                <span className={`proj-badge ${p.status}`}>
+                  ● {p.status}
+                </span>
+              </div>
+              <p className="proj-card-blurb">{p.blurb}</p>
+              <div className="proj-card-tags">
+                {p.tags.map(t => <span key={t} className="proj-tag">{t}</span>)}
+              </div>
+            </div>
+            <div className="proj-card-footer">
+              {p.liveUrl ? (
+                <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="proj-link">
+                  View live
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M17 7H8M17 7V16" />
+                  </svg>
+                </a>
+              ) : (
+                <span className="proj-built-label">Built ✓</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
