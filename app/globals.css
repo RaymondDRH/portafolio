@@ -39,10 +39,32 @@ html, body { height: 100%; overflow: hidden; }
 }
 
 /* ── Light Theme ── */
-[data-theme="light"] .vsc-activitybar { background: #2c2c2c; }
-[data-theme="light"] .vsc-actbar-btn  { color: #aaaaaa; }
-[data-theme="light"] .vsc-actbar-btn:hover  { color: #ffffff; }
-[data-theme="light"] .vsc-actbar-btn.active { color: #ffffff; }
+/* Activity bar always dark */
+[data-theme="light"] .vsc-activitybar          { background: #2c2c2c; }
+[data-theme="light"] .vsc-actbar-btn           { color: #aaaaaa; }
+[data-theme="light"] .vsc-actbar-btn:hover     { color: #ffffff; }
+[data-theme="light"] .vsc-actbar-btn.active    { color: #ffffff; }
+
+/* Explorer hover/active */
+[data-theme="light"] .vsc-explorer-file:hover  { background: rgba(0,0,0,0.06); }
+[data-theme="light"] .vsc-explorer-file.active { background: rgba(0,0,0,0.12); }
+
+/* Cards — project, skill, contact */
+[data-theme="light"] .proj-card         { background: #f0f0f0; }
+[data-theme="light"] .proj-card-visual  { background: #e4e4e4; }
+[data-theme="light"] .proj-card-footer  { border-top-color: var(--border); }
+[data-theme="light"] .skill-group       { background: #f0f0f0; }
+[data-theme="light"] .contact-channel   { background: #f0f0f0; }
+
+/* Pills and tags — rgba(255,255,255,0.04) is invisible in light mode */
+[data-theme="light"] .home-tag   { background: rgba(0,0,0,0.06); }
+[data-theme="light"] .skill-pill { background: rgba(0,0,0,0.05); color: var(--text-dim); }
+
+/* Markdown inline code */
+[data-theme="light"] .md-code { background: rgba(0,0,0,0.07); }
+
+/* Panel hint bar */
+[data-theme="light"] .vsc-panel-hint { background: rgba(29,155,140,0.06); border-top-color: rgba(29,155,140,0.2); }
 
 [data-theme="light"] {
   --editor-bg:    #ffffff;
