@@ -17,31 +17,42 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Raymond Reyes — AI-First Full-Stack Developer',
   description:
-    'AI-first full-stack developer and founder of raymondreyes.dev. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
+    'AI-First Full-Stack Developer building production SaaS from scratch — real auth, real billing, real users. 7 products shipped with Next.js, Supabase and Claude API.',
   keywords: [
     'AI developer',
+    'AI-first developer',
     'full-stack developer',
-    'Next.js',
+    'Next.js developer',
+    'React developer',
+    'TypeScript developer',
+    'SaaS developer',
     'Supabase',
     'Claude API',
     'automation',
     'n8n',
+    'freelance developer',
+    'Raymond Reyes',
     'raymondreyes.dev',
   ],
-  authors: [{ name: 'Raymond Reyes' }],
+  authors: [{ name: 'Raymond Reyes', url: 'https://raymondreyes.dev' }],
+  metadataBase: new URL('https://raymondreyes.dev'),
+  alternates: { canonical: '/' },
+  robots: { index: true, follow: true },
   openGraph: {
     title: 'Raymond Reyes — AI-First Full-Stack Developer',
     description:
-      'AI-first full-stack developer and founder of raymondreyes.dev. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
+      'AI-First Full-Stack Developer building production SaaS from scratch — real auth, real billing, real users. 7 products shipped with Next.js, Supabase and Claude API.',
     url: 'https://raymondreyes.dev',
     siteName: 'Raymond Reyes',
     type: 'website',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Raymond Reyes — AI-First Full-Stack Developer',
     description:
-      'AI-first full-stack developer and founder of raymondreyes.dev. Building production SaaS with Claude, Next.js, Supabase, and Stripe.',
+      'AI-First Full-Stack Developer building production SaaS from scratch — real auth, real billing, real users. 7 products shipped with Next.js, Supabase and Claude API.',
+    creator: '@RaymondDRH',
   },
 }
 
